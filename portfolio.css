@@ -196,7 +196,7 @@ body::before {
 	z-index: 10;
 	text-decoration: none;
 	color: var(--bauhaus-black);
-	animation: bounce 2s infinite;
+	animation: bounce 1s infinite;
 }
 
 .arrow-down {
@@ -342,11 +342,11 @@ html {
 	max-width: 90vw;
 	height: 100vh;
 	background: var(--bauhaus-cream);
-	box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+
 	z-index: 101;
-	transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	transition: right 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 	overflow-y: auto;
-	border-left: 3px solid var(--bauhaus-black);
+	/* border-left: 3px solid var(--bauhaus-black); */
 }
 
 .about-panel.open {
@@ -367,7 +367,7 @@ html {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: all 0.3s ease;
+	transition: all 0.5s ease;
 	font-family: "lato", sans-serif;
 	line-height: 1;
 }
@@ -383,13 +383,13 @@ html {
 }
 
 .about-title {
-	font-size: 2.5rem;
-	font-weight: 900;
+	font-size: 2rem;
+	font-weight: 700;
 	margin-bottom: 2rem;
 	color: var(--bauhaus-black);
-	font-family: "Caslon", sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
+	font-family: "Lato", sans-serif;
+	/* text-transform: uppercase; */
+	letter-spacing: -0.02em;
 }
 
 .about-text {

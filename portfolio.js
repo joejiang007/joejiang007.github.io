@@ -394,7 +394,9 @@ const AboutMePanel = ({ isOpen, onClose }) => {
 					×
 				</button>
 				<div className="about-content">
-					<h2 className="about-title">About Me</h2>
+					<h2 className="about-title">
+						<TypingEffect text="About me" speed={100} errorPosition={2} />
+					</h2>
 					<div className="about-text">
 						<p>
 							Welcome to my portfolio! I'm passionate about data visualization, interactive design, and creative coding.
