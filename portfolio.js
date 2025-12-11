@@ -384,9 +384,36 @@ const ParticleSystem = ({ audioData = { amplitude: 0, bass: 0, mid: 0, treble: 0
 	return <canvas ref={canvasRef} className="particle-canvas" />;
 };
 
+// About Me Panel Component
+const AboutMePanel = ({ isOpen, onClose }) => {
+	return (
+		<>
+			{isOpen && <div className="about-overlay" onClick={onClose} />}
+			<div className={`about-panel ${isOpen ? "open" : ""}`}>
+				<button className="about-close-btn" onClick={onClose}>
+					×
+				</button>
+				<div className="about-content">
+					<h2 className="about-title">About Me</h2>
+					<div className="about-text">
+						<p>
+							Welcome to my portfolio! I'm passionate about data visualization, interactive design, and creative coding.
+						</p>
+						<p>
+							Through my work, I explore the intersection of art and technology, creating engaging visual experiences
+							that tell compelling stories.
+						</p>
+					</div>
+				</div>
+			</div>
+		</>
+	);
+};
+
 // Main App Component
 const App = () => {
 	const [audioData, setAudioData] = useState({ amplitude: 0, bass: 0, mid: 0, treble: 0 });
+	const [isAboutOpen, setIsAboutOpen] = useState(false);
 
 	return (
 		<div className="app">
@@ -402,11 +429,20 @@ const App = () => {
 							errorPosition={15}
 						/>
 					</p>
+					<div className="hero-buttons">
+						<button className="about-btn" onClick={() => setIsAboutOpen(true)}>
+							About Me
+						</button>
+						<button className="about-btn" onClick={() => setIsAboutOpen(true)}>
+							Learn More
+						</button>
+					</div>
 				</div>
 				<a href="#venn-section" className="scroll-down-arrow">
-					<span className="arrow-down">↓</span>
+					<span className="arrow-down">*</span>
 				</a>
 			</section>
+			<AboutMePanel isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
 
 			<section id="venn-section" className="venn-section">
 				<div className="container">
