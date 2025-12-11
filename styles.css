@@ -1,0 +1,54 @@
+body {
+  background-image: url('back2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#titletext {
+  font-size: 60px;
+  font-family: 'futura', sans-serif;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 20px;
+  margin: 0;
+}
+
+#banner {
+  height: 200px;
+}
+
+.assign1 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+
+.assigns {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+
+  transition: 0.5s;
+  display: none;
+}
+
+.btn1 {
+  border: none;
+  background-color: transparent;
+  font-family: 'futura', sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  transition: 0.5s;
+}
+
+.assign1:hover .assigns {
+  display: block;
+  transition: 0.5s;
+}
+
+.btn1:hover {
+  text-decoration: underline orangered;
+
+  transition: 0.5s;
+}

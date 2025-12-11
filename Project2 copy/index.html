@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <title>Test 1</title>
+  </head>
+  <body>
+    <header>
+      <!-- <h1>Scrolling Test 1</h1> -->
+    </header>
+
+    <div id="graphic">
+      <div id="sections">
+        <section class="setup">
+          <p id="setup">
+            Families Are Still Struggling to Pay Medical Costs Despite Nearly
+            Universal Health Coverage in Massachusetts<br />
+          </p>
+          <p id="p1">
+            Massachusetts is a national leader in its pursuit of universal
+            health care coverage. More than 97% of Massachusetts residents have
+            health insurance. In spite of this, affordability issues persist
+            across all groups regardless of age, gender, race, health status, or
+            family income.
+            <br />
+            <br />
+            Below, CHIA looks at four different areas that are affecting
+            Massachusetts residents: <br />Medical Bills, Unexpected Medical
+            Bills, Medical Debt, and High Deductible Health Plans.
+            <br />
+            <br />
+            <br />
+            <button
+              id="scrollPage"
+              onclick="window.scrollTo({ top: 1410, behavior: 'smooth' })"
+            >
+              Explore
+            </button>
+          </p>
+        </section>
+
+        <br />
+        <br />
+        <br />
+        <section class="step">
+          <div class="subhead">Medical Bills</div>
+          <div class="title">
+            Of all Massachusetts residents with health insurance,
+            <span id="orangetext"
+              >15% experienced problems paying medical bills </span
+            >in 2019.
+          </div>
+
+          <br />
+        </section>
+        <section class="step">
+          <div class="title">
+            The problems are associated with various types of health care
+            services.<br /><br />
+            Most often, two or more types of care were reported.
+          </div>
+          <br />
+        </section>
+        <section class="step">
+          <div class="title">
+            And insured residents often faced serious financial consequences.
+          </div>
+          <br />
+          <button id="explore1">Cut back on savings</button>
+          <br />
+          <button id="explore2">Took on credit card debt</button>
+          <br />
+          <button id="explore3">Contacted by collection agency</button>
+        </section>
+        <section class="step">
+          <div class="title">
+            Families with <span id="orangetext">moderate incomes</span> were
+            especially burdened.
+          </div>
+          <br />
+          FPL stands for Federal Poverty Level.
+        </section>
+        <section class="step">
+          <div class="subhead">Unexpected Medical Bills</div>
+          <div class="title">
+            Increasingly, patients will also receive a bill that they weren't
+            anticipating.<br /><br />
+            Among Massachusetts' insured residents,
+            <span id="orangetext">
+              37% received an unexpected medical bill</span
+            >
+            in the last 12 months.
+          </div>
+        </section>
+        <section class="step">
+          <div class="title">
+            45% have received 3 or more unexpected medical bills.
+          </div>
+        </section>
+        <section class="step">
+          <div class="title">
+            <span id="orangetext">Families with children</span> were more likely
+            to have unexpected medical bills than those without children.
+          </div>
+        </section>
+        <section class="step">
+          <div class="title" id="longtext">
+            Among insured residents, those who received unexpected medical bills
+            are
+            <span id="orangetext"
+              >3x more likely to experience problems paying</span
+            >
+            than those who do not receive those bills.
+          </div>
+        </section>
+        <section class="step">
+          <div class="subhead">Medical Debt</div>
+          <div class="title" id="longtext">
+            Among Massachusetts residents who were insured all year,
+            <span id="bluetext"
+              >17% reported that their family has medical debt.</span
+            >
+          </div>
+        </section>
+        <section class="step">
+          <div class="title">
+            The four most reported reasons attributed to medical debt are:
+          </div>
+          <br />
+          <button id="debt1" class="debt">Cost sharing</button>
+          <br />
+          <button id="debt2" class="debt">Deductibles</button>
+          <br />
+          <button id="debt3" class="debt">Copays or coinsurance</button>
+          <br />
+          <button id="debt4" class="debt">Not covered by health plan</button>
+        </section>
+        <section class="step">
+          <div class="title">
+            In 2019, a majority of insured residents reported that their family
+            medical debt was at least $2,000, and nearly one in 10 were carrying
+            medical debt of more than $8,000.
+          </div>
+        </section>
+        <section class="step">
+          <div class="subhead">High Deductible Health Plan (HDHP)</div>
+          <div class="title">
+            HDHPs represent a growing share of the private health insurance
+            market in Massachusetts.<br /><br />
+            Residents with family income over 300% of FPL were more likely than
+            those with lower family income to enroll in an HDHP, regardless of
+            chronic condition.
+          </div>
+        </section>
+        <section class="step">
+          <div class="title">
+            HDHP members reported high rates of affordability issues than other
+            privately insured residents.
+          </div>
+        </section>
+        <section class="step">
+          <div class="title">
+            HDHP enrollment was associated with a higher rate of affordability
+            issues when examined by family income and chronic condition status
+          </div>
+        </section>
+        <section class="step">
+          <div class="title">
+            HDHP members with both family income below 300% of the FPL and one
+            or more chronic conditions, 84% reported having affordability issues
+          </div>
+        </section>
+        <section class="step" id="lastsec">
+          <div class="title">
+            Even among HDHP members with higher income and no chronic
+            conditions, 41% experienced an affordability issue
+          </div>
+        </section>
+        <section class="step">
+          <div class="title">
+            For more information, please read the Massachusetts Health Insurance
+            Survey.
+          </div>
+          <br />
+          <br />
+
+          <a
+            href="https://www.chiamass.gov/assets/docs/r/survey/mhis-2021/2021-MHIS-Report.pdf"
+          >
+            <button id="download">View Full Report</button>
+          </a>
+        </section>
+      </div>
+      <div id="viz">
+        <div id="logo"><img src="./assets/CHIAlogo.jpg" /></div>
+      </div>
+    </div>
+
+    <script src="scroller.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

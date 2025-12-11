@@ -1,0 +1,88 @@
+#viz {
+  width: 1200px;
+  background-color: lightgrey;
+  border-radius: 10px;
+  max-height: 800px;
+  position: relative;
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.axis {
+  font-family: 'futura', sans-serif;
+}
+
+#age path,
+#age line {
+  display: none;
+}
+/* .axis path {
+  display: none;
+} */
+
+/* .axis line {
+  display: none;
+} */
+
+h1 {
+  text-align: center;
+  font-family: Futura, sans-serif;
+  display: block;
+  margin-bottom: 0px;
+}
+
+@media only screen and (max-width: 1200px) {
+  #viz {
+    position: fixed;
+    top: 100px;
+    left: 2.5%;
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  /* #viz svg {
+    display: inline-block;
+    max-width: 200px;
+  } */
+}
+@media only screen and (max-width: 800px) {
+  h1 {
+    font: size 23px;
+  }
+
+  .axisGroup text {
+    font-size: 12px;
+  }
+
+  .lgd text {
+    font-weight: bold;
+    transform: translate(0, 5px);
+  }
+  .lgd rect {
+    height: 15px;
+  }
+  #bgdRect {
+    height: 50px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #viz {
+    position: fixed;
+    top: 100px;
+
+    width: 95%;
+  }
+
+  .axisGroup text {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}

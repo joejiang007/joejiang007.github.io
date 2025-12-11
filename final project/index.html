@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./stylesheet.css" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+  <title>Most Popular Steam Games By Category</title>
+  
+  <body>
+    
+    <div id = "banner">
+        <p id = "opaText" style="text-align: left; width:49%; display: inline-block; font-size: 100px;">CS:GO</p>
+        <p id = "opaText" style="text-align: right; width:50%;  display: inline-block; font-size: 100px;">GTA 5</p>  
+    
+    <h1>  Most Popular <br> <p1 style="font-style:italic">Steam </p1>Games </h1>
+    
+    <h3 style="text-align: center;">
+       Let's see the most popular steam games in 8 game categories!
+       <br>
+       The data used in this website is game-features.csv by Craig Kelly
+       <br>
+       
+    <p style = "text-align: center;">
+        Created by Joe
+    </p>
+    </h3>
+
+    <p id = "opaText" style="text-align: left; width:49%; display: inline-block; font-size: 100px;">DOTA 2</p>
+    <p id = "opaText" style="text-align: right; width:50%;  display: inline-block; font-size: 100px;">NBA 2K22</p> 
+    
+    </div>
+
+    <div class = "section">
+        <p style="font-family: Tomorrow, sans-serif; text-align: center; font-weight: bold; font-size: 25px;">
+            <br>
+            <br>
+           Click the buttons below to see 8 categories' most popular 10 games throughout steam history!
+           <br>
+           <br>
+            <button class="btn" style="font-weight: bold" onclick="actions()">
+                <span class="btn__content" >Action!!</span>
+                <span class="btn__glitch"></span>
+                
+            </button>
+
+            <button class="btn" style="font-weight: bold" onclick="adventures()">
+                <span class="btn__content">Adventure!</span>
+                <span class="btn__glitch"></span>
+            </button>
+
+            <br>
+            
+            <button class="btn" style="font-weight: bold;" onclick="casuals()">
+                <span class="btn__content">Casual~</span>
+                <span class="btn__glitch"></span>
+            </button>
+
+            <button class="btn" style="font-weight: bold" onclick="strategies()"> 
+                <span class="btn__content">$trategy</span>
+                <span class="btn__glitch"></span>
+            </button>
+
+            <br>
+            
+            <button class="btn" style="font-weight: bold" onclick = "multiplayer()">
+                <span class="btn__content">MultiPlayer...</span>
+                <span class="btn__glitch"></span>
+            </button>
+
+            <button class="btn" style="font-weight: bold" onclick="sports()">
+                <span class="btn__content">Sp000rts</span>
+                <span class="btn__glitch"></span>
+            </button>
+            
+            <br>
+
+            <button class="btn" style="font-weight: bold" onclick="rpg()">
+                <span class="btn__content">R P G</span>
+                <span class="btn__glitch"></span>
+            </button>
+
+            <button class="btn" style="font-weight: bold" onclick="simulation()">
+                <span class="btn__content">SSimulation</span>
+                <span class="btn__glitch"></span>
+            </button>
+
+
+        </p>
+        
+        <svg id = "chart1"></svg>
+    </div>
+    <div class = "reco">
+        
+        
+        <h1 style="font-family: Tomorrow, sans-serif; text-align: center; font-weight: bold; font-size: 50px;">
+            
+            Recommendations
+            <br>
+           
+
+
+
+
+            
+        </h1>
+        <p style = "font-family: Tomorrow, sans-serif; font-weight: bold; font-size: 25px;">
+            Top Games in general:
+            <br>
+            <br>
+            
+        
+      
+            <br>
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/062e5e10-0d29-4a44-941a-de4fad7ab823/d7k12s2-c81b4187-a9d0-42d3-9973-08097597d640.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzA2MmU1ZTEwLTBkMjktNGE0NC05NDFhLWRlNGZhZDdhYjgyM1wvZDdrMTJzMi1jODFiNDE4Ny1hOWQwLTQyZDMtOTk3My0wODA5NzU5N2Q2NDAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.yFNz27D-CPk8euBv6xyuOAkYGbuIbSbiX95NSfeHXu4" width="200", height="200" />
+            &emsp;&emsp;&emsp;&emsp;
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b12e9fcb-cf00-4b56-9f99-cd7c4a263dc3/dbj3qhu-48ec4d3e-7cf8-4ebe-bb5b-80ef0bc741b5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2IxMmU5ZmNiLWNmMDAtNGI1Ni05Zjk5LWNkN2M0YTI2M2RjM1wvZGJqM3FodS00OGVjNGQzZS03Y2Y4LTRlYmUtYmI1Yi04MGVmMGJjNzQxYjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.t5eQz5OrQN85gdW0--g5N8Uz6yO_kn1q8Rscc-iV474" width = "200" height="200" />
+            &emsp;&emsp;&emsp;&emsp;
+            <img src="https://cdn.iconscout.com/icon/free/png-256/cs-go-2288565-1933810.png" width="200" height="200"/>
+            &emsp;&emsp;&emsp;&emsp;
+            <img src="https://www.freepnglogos.com/uploads/gta-5-logo-png/gta-v-green-4.png" width="200" height="200"/>
+            <br>
+            <br>
+
+            &emsp;&emsp;&ensp;Dota 2 &emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;Portal 2
+            &emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;CS:GO&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;GTA 5
+            <br>
+            
+        </p>
+        <p>
+            "9/10, I am still waiting for &emsp;&emsp;&ensp;&emsp;&emsp; "If your friends don't think this is one &emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;"rip social life"&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;"Can't pass my car test after this"
+            <br>
+            the tenth player to confirm"  &emsp;&emsp;&ensp;&emsp;&emsp;of the best games ever, you need
+            <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;smarter friends"
+            <br>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-Drako9  &emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-Nailim
+            &emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-roan. &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-阿罗拉样子的雷丘
+        </p>
+        <p style = "font-family: Tomorrow, sans-serif;font-weight: bold;font-size: 25px;">
+            <br>
+            Joe's Favorite:
+            <br>
+            <br>
+            <br>
+            <img src="https://cdn2.steamgriddb.com/file/sgdb-cdn/icon/25e2a30f44898b9f3e978b1786dcd85c/32/256x256.png" width="200" height="200"/>
+            &emsp;&emsp;&emsp;&emsp;
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/3367fa99-0ba6-454c-b947-683f1a9f896d/ddx6og2-42452595-5cf1-4373-a313-4540833c3c31.png" width="200" height="200"/>
+            &emsp;&emsp;&emsp;&emsp;
+            <img src="https://styles.redditmedia.com/t5_2aus3o/styles/communityIcon_7r4oqjo3xp541.png" width="200" height="200"/>
+            &emsp;&emsp;&emsp;&emsp;
+            <img src="https://pbs.twimg.com/profile_images/1428010414659538948/2yd-fRth_400x400.jpg" width="200" height="200"/>
+            <br>
+            <br>
+
+            Gunfire Reborn &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;MHW
+            &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Skul:The Hero Slayer&emsp;&emsp;&emsp;&ensp;Draw & Guess
+            <br>
+
+
+
+        </p>
+        <p>
+            It's been fun fighting over &emsp;&emsp;&ensp;&emsp;&emsp; If you don't want to miss classes &emsp;&emsp;&ensp;&emsp;&emsp;You can even throw your own head&emsp;&emsp;&emsp;&emsp;This will make you laugh all night 
+            <br>
+            items with friends  &emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Don't buy this game&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;at enemies!!!
+            <br>
+            <br>
+            
+        </p>
+
+
+    
+        
+    </div>
+    
+
+    <div id = "tooltip"></div>
+
+
+
+
+
+
+
+    <script>
+       //filter each category's games data 
+        function actions(){
+            d3.csv("./games-features.csv", function(data) {
+            var actionGames = data.filter(function(row){
+                return row["GenreIsAction"] == 'TRUE';
+                })
+                
+                //sort the action games by players
+                actionGames.sort(function(x, y){
+                    return y["SteamSpyPlayersEstimate"] - x["SteamSpyPlayersEstimate"];
+
+                })
+                console.log(actionGames);
+                var topTenActions = actionGames.slice(0,10);
+                console.log(topTenActions);
+                var title = "Action";
+                drawBars(topTenActions, title);
+            });
+        }
+        
+        function adventures(){
+            d3.csv("./games-features.csv", function(data){
+                var adventureGames = data.filter(function(row){
+                    return row["GenreIsAdventure"] == 'TRUE';
+                })
+
+                adventureGames.sort(function(x, y){
+                    return y["SteamSpyPlayersEstimate"] - x["SteamSpyPlayersEstimate"];
+                })
+                console.log(adventureGames);
+                var topTenAdven = adventureGames.slice(0, 10);
+                console.log(topTenAdven);
+                var title = "Adventure";
+                drawBars(topTenAdven,title);
+            })
+        }
+
+        function casuals(){
+            d3.csv("./games-features.csv", function(data){
+                var casualGames = data.filter(function(row){
+                    return row["GenreIsCasual"] == 'TRUE';
+                })
+
+                casualGames.sort(function(x, y){
+                    return y["SteamSpyPlayersEstimate"] - x["SteamSpyPlayersEstimate"];
+                })
+                console.log(casualGames);
+                var topTenCasual = casualGames.slice(0, 10);
+                console.log(topTenCasual);
+                var title = "Casual";
+                drawBars(topTenCasual,title);
+            })
+        }
+
+        function strategies(){
+            d3.csv("./games-features.csv", function(data){
+                var stratGames = data.filter(function(row){
+                    return row["GenreIsStrategy"] == 'TRUE';
+                })
+
+                stratGames.sort(function(x, y){
+                    return y["SteamSpyPlayersEstimate"] - x["SteamSpyPlayersEstimate"];
+                })
+                console.log(stratGames);
+                var topTenStrat = stratGames.slice(0, 10);
+                console.log(topTenStrat);
+                var title = "Strategy";
+                drawBars(topTenStrat, title);
+            })
+        }
+
+        function multiplayer(){
+            d3.csv("./games-features.csv", function(data){
+                var multiGames = data.filter(function(row){
+                    return row["GenreIsMassivelyMultiplayer"] == 'TRUE';
+                })
+
+                multiGames.sort(function(x, y){
+                    return y["SteamSpyPlayersEstimate"] - x["SteamSpyPlayersEstimate"];
+                })
+                console.log(multiGames);
+                var topTenMulti = multiGames.slice(0, 10);
+                console.log(topTenMulti);
+                var title = "Multiplayer";
+                drawBars(topTenMulti, title);
+            })
+        }
+
+        function sports(){
+            d3.csv("./games-features.csv", function(data){
+                var sportsGames = data.filter(function(row){
+                    return row["GenreIsSports"] == 'TRUE';
+                })
+
+                sportsGames.sort(function(x, y){
+                    return y["SteamSpyPlayersEstimate"] - x["SteamSpyPlayersEstimate"];
+                })
+                console.log(sportsGames);
+                var topTenSports = sportsGames.slice(0, 10);
+                console.log(topTenSports);
+                var title = "Sport";
+                drawBars(topTenSports, title);
+            })
+        }
+
+        
+        function rpg() {
+
+            d3.csv("./games-features.csv", function(data){
+                var rpgGames = data.filter(function(row){
+                    return row["GenreIsRPG"] == 'TRUE';
+                })
+
+                rpgGames.sort(function(x, y){
+                    return y["SteamSpyPlayersEstimate"] - x["SteamSpyPlayersEstimate"];
+                })
+                console.log(rpgGames);
+                var topTenRpg = rpgGames.slice(0, 10);
+                console.log(topTenRpg);
+                var title = "RPG";
+                drawBars(topTenRpg, title);
+            })
+        }
+
+        function simulation() {
+            d3.csv("./games-features.csv", function(data){
+                var simGames = data.filter(function(row){
+                    return row["GenreIsSimulation"] == 'TRUE';
+                })
+
+                simGames.sort(function(x, y){
+                    return y["SteamSpyPlayersEstimate"] - x["SteamSpyPlayersEstimate"];
+                })
+                console.log(simGames);
+                var topTenSim = simGames.slice(0, 10);
+                console.log(topTenSim);
+                var title = "Simulation";
+                drawBars(topTenSim, title);
+            })
+
+
+
+        }
+        
+        //take an array and draw the bars displaying name and player estimate
+        var svg = d3.select("#chart1")
+        
+        function drawBars(data, title){
+           
+            svg.selectAll("g")
+            .remove();
+            svg.selectAll(".bar")
+            .remove();
+
+
+
+            console.log(data);
+            
+            var mean = 0;
+            console.log(mean);
+            function getMean(data) {
+                for(let i = 0; i < data.length; i++) {
+                    mean = parseInt(mean);
+                    var dataInt = parseInt(data[i].SteamSpyPlayersEstimate);
+                    mean = mean + dataInt;
+                }
+                return mean;
+            }
+            
+            
+            getMean(data);
+            mean = Math.floor(mean/10);
+            console.log(mean);
+            
+            var margin = 20;
+            var width = 400 - margin;
+            var height = 400 - margin;
+            console.log(height);
+
+            svg = d3.select("#chart1")
+                .attr("width", width)
+                .attr("height", height);
+
+            var g = svg.append("g")
+                .attr("transform", "translate(" + 200 + "," + 50 + ")");
+            
+            
+            var yScale = d3.scaleBand()
+            .range([0, height])
+            .padding(0.1);
+
+            
+            var xScale = d3.scaleLinear()
+                .range([width * 1.7, 0])
+                .domain([data[0].SteamSpyPlayersEstimate, 0]);
+
+            yScale.domain(data.map(function(d){
+                return d.QueryName;
+            }));
+
+            g.append("g")
+              
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(xScale));
+            
+            g.append("g")
+                
+                .call(d3.axisLeft(yScale).tickFormat(function(d){
+                    return d;
+                }).ticks(10));
+            
+            
+
+            function startState(selection){
+                selection  
+                    .attr("y", 0)
+                    .attr("height", 0);
+
+            }
+            console.log(data);
+
+
+            function getColor(data){
+                
+                
+            }
+            
+            // append the bars
+            var bars = svg.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .call(startState)
+            
+           
+            
+            .on("mouseover", function(d){
+                var tooltip = d3.select("#tooltip")
+                .style("display", "block")
+                .style("top", d3.event.pageY + 20 +"px")
+                .style("left", d3.event.pageX + 20 + "px");
+
+                tooltip
+                .html(d.QueryName + "<br> <br> Estimate Players :" + d.SteamSpyPlayersEstimate + "<br> Estimate Owners : " + d.SteamSpyOwners + "<br> Rating by Metacritic :" + d.Metacritic);
+            })
+            .on("mouseout", function(d){
+                d3.select("#tooltip")
+                .style("display", "none");
+            })
+            .transition().duration(1000)
+            .attr("width", function(d){
+                return xScale(d.SteamSpyPlayersEstimate)
+            })
+            .attr("height", yScale.bandwidth())
+            .attr("x", 200)
+            .attr("y", function(d){
+                return yScale(d.QueryName) + 50;
+            })
+            .attr("fill", function(d){
+                var reco = parseInt(d.RecommendationCount);
+                var player = parseInt(d.SteamSpyPlayersEstimate);
+                console.log(reco/player);
+                var recoRate = reco/player;
+                if(recoRate >= 0.02){
+                    return "red";
+                } else if(recoRate >= 0.01 && recoRate < 0.02){
+                    return "DarkRed";
+                }else{
+                    return "black";
+                }
+            });
+
+            //label and the title of the chart
+            g.append("text")
+            .attr("x", -60)
+            .attr("y", -10)
+            .text("Games")
+            .style("font-family", "tomorrow, sans-serif")
+            .style("fill", "red")
+            .style("stroke", "black")
+            .style("stroke-width", "1px");
+
+            g.append("text")
+            .attr("x", 240)
+            .attr("y", 430)
+            .text("Estimate Players")
+            .style("font-family", "tomorrow, sans-serif")
+            .style("fill", "red")
+            .style("stroke", "black")
+            .style("stroke-width", "1px");
+
+            g.append("text")
+            .transition().duration(1000)
+            .attr("x", 300)
+            .attr("y", 350)
+            .text(title)
+            .style("font-size", "80px")
+            .style("font-family", "Tomorrow, sans-serif")
+            .style("font-weight", "bold")
+            .style("fill", "black")
+            .style("opacity", "0.7");
+
+            g.append("text")
+            .transition().duration(1000)
+            .attr("x", 600)
+            .attr("y", 150)
+            .text("Recommandation rate")
+            .style("fill", "black")
+            .style("font-size", "13px")
+            .style("font-family", "Tomorrow, sans-serif")
+            .style("font-weight", "bold");
+
+
+            g.append("rect")
+            .transition().duration(1000)
+            .attr("width", 10)
+            .attr("height", 10)
+            .attr("x", 600)
+            .attr("y", 160)
+            .style("fill", "red");
+
+            g.append("text")
+            .transition().duration(1000)
+            .attr("x", 620)
+            .attr("y", 170)
+            .text(">=2%")
+            .style("font-family", "Tomorrow, sans-serif")
+            .style("font-size", "12px");
+
+            g.append("rect")
+            .transition().duration(1000)
+            .attr("width", 10)
+            .attr("height", 10)
+            .attr("x", 600)
+            .attr("y", 180)
+            .style("fill", "DarkRed");
+
+            g.append("text")
+            .transition().duration(1000)
+            .attr("x", 620)
+            .attr("y", 190)
+            .text("1%-2%")
+            .style("font-family", "Tomorrow, sans-serif")
+            .style("font-size", "12px");
+
+            g.append("rect")
+            .transition().duration(1000)
+            .attr("width", 10)
+            .attr("height", 10)
+            .attr("x", 600)
+            .attr("y", 200)
+            .style("fill", "Black");
+
+            g.append("text")
+            .transition().duration(1000)
+            .attr("x", 620)
+            .attr("y", 210)
+            .text("0%-1%")
+            .style("font-family", "Tomorrow, sans-serif")
+            .style("font-size", "12px");
+
+
+        }
+    </script>
+
+    <script src="./background.js"></script>
+    <script src="./data.js"></script>
+    <script src="./chart1.js"></script>
+   
+
+  </body>
+</html>
